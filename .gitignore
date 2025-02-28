@@ -3,7 +3,7 @@ __pycache__/
 *.py[cod]
 *$py.class
 
-modeling/models/
+modeling/models/*
 modeling/data/raw/*
 modeling/data/preprocessed/*
 
