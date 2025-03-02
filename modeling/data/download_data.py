@@ -35,7 +35,7 @@ def download_images(metadata_file, save_path):
 
 if __name__ == "__main__":
     metadata_path = '/teamspace/studios/this_studio/Fashion-Auto-SEO/modeling/data/raw/2025-03-02'
-    save_path = '/teamspace/studios/this_studio/Fashion-Auto-SEO/modeling/data'
+    save_path = '/teamspace/studios/this_studio/Fashion-Auto-SEO/modeling/data/raw'
     download_images(os.path.join(metadata_path, 'ao_lien_quan.json'), save_path)
     download_images(os.path.join(metadata_path, 'ao_so_mi_nu.json'), save_path)
     download_images(os.path.join(metadata_path, 'ao_thun_nu.json'), save_path)
