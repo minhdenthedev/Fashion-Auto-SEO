@@ -10,10 +10,10 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
-RAW_DATA_PATH = "/home/m1nhd3n/PycharmProjects/FashionAutoSEO/modeling/data/raw"
+RAW_DATA_PATH = "/home/m1nhd3n/PycharmProjects/FashionAutoSEO/modeling/data/tiki"
 TODAY = str(datetime.today().date())
 
-with open("nu_urls.json", "r") as f:
+with open("remaining_sites.json", "r") as f:
     NAME_URL = json.load(f)
 
 print(json.dumps(NAME_URL, indent=2))
@@ -25,6 +25,7 @@ if not os.path.exists(os.path.join(RAW_DATA_PATH, TODAY)):
 def get_html(url, drv, site_name):
     print(f"Getting site {site_name}")
     drv.get(url)
+    drv.implicitly_wait(10)
     while True:
         state = drv.execute_script("return document.readyState")
         if state == "complete":
@@ -38,7 +39,7 @@ def get_html(url, drv, site_name):
 
 
 def press_load_more(drv, load_more_count):
-    max_load_more = 10
+    max_load_more = 50
     while True:
         try:
             # Wait until the button is clickable
@@ -176,7 +177,7 @@ pipeline(NAME_URL)
 # print("Getting products")
 # product_data = data['props']['initialState']['catalog']['data']
 
-# print("Saving raw data")
+# print("Saving tiki data")
 # save_to_csv(product_data, CSV_SAVE_PATH)
 # print(f"Saved {len(product_data)} rows.")
 # print(product_data[0].keys())

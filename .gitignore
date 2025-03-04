@@ -4,7 +4,7 @@ __pycache__/
 *$py.class
 
 modeling/models/*
-modeling/data/raw/*
+modeling/data/tiki/*
 modeling/data/preprocessed/*
 
 # C extensions

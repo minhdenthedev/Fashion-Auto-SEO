@@ -2,8 +2,8 @@ import json
 import os
 
 
-DATE_FOLDER = "/home/m1nhd3n/PycharmProjects/FashionAutoSEO/modeling/data/raw/2025-03-01"
-SAVE_PATH = os.path.join(DATE_FOLDER, "2025_03_01.json")
+DATE_FOLDER = "/home/m1nhd3n/PycharmProjects/FashionAutoSEO/modeling/data/tiki/2025-03-03"
+SAVE_PATH = os.path.join(DATE_FOLDER, "2025-03-03.json")
 filenames = os.listdir(DATE_FOLDER)
 data = []
 for n in filenames:
