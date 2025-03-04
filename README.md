@@ -1,5 +1,4 @@
 # Fashion-Auto-SEO
-
 ## 1. Directory structure
 ```commandline
 ├── crawler
