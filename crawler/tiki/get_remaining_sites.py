@@ -3,7 +3,7 @@ import os
 
 NAM_SITES_PATH = "/home/m1nhd3n/PycharmProjects/FashionAutoSEO/crawler/tiki/nam_urls.json"
 NU_SITES_PATH = "/home/m1nhd3n/PycharmProjects/FashionAutoSEO/crawler/tiki/nu_urls.json"
-DATE_FOLDER = "/home/m1nhd3n/PycharmProjects/FashionAutoSEO/modeling/data/tiki/2025-03-01"
+DATE_FOLDER = "/home/m1nhd3n/PycharmProjects/FashionAutoSEO/modeling/data/raw/2025-03-01"
 SAVE_PATH = os.path.join(DATE_FOLDER, "2025_03_01.json")
 filenames = os.listdir(DATE_FOLDER)
 

@@ -10,10 +10,10 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
-RAW_DATA_PATH = "/home/m1nhd3n/PycharmProjects/FashionAutoSEO/modeling/data/tiki"
+RAW_DATA_PATH = "/modeling/data/raw"
 TODAY = str(datetime.today().date())
 
-with open("remaining_sites.json", "r") as f:
+with open("giay_nu_urls.json", "r") as f:
     NAME_URL = json.load(f)
 
 print(json.dumps(NAME_URL, indent=2))
@@ -61,11 +61,9 @@ def press_load_more(drv, load_more_count):
 
 def pipeline(names_urls: dict):
     options = webdriver.FirefoxOptions()
-    options.add_argument("--headless")  # Run in headless mode (no UI)
+    # options.add_argument("--headless")  # Run in headless mode (no UI)
     options.add_argument("--disable-gpu")
     driver = webdriver.Firefox(options=options)
-    error_logs = {}
-    info_logs = {}
     success_names = []
     fail_count = 0
     while len(success_names) < len(NAME_URL) and fail_count < 10:
@@ -79,24 +77,16 @@ def pipeline(names_urls: dict):
                 products = get_products(html, name)
                 with open(json_save_path, "w", encoding="utf-8") as f:
                     json.dump(products, f)
-                info_logs[name] = len(products)
                 print(f"{name}: success {len(products)} items")
                 if len(products) > 0:
                     success_names.append(name)
                 else:
                     fail_count += 1
             except Exception as e:
-                error_logs[name] = str(e)
                 fail_count += 1
                 print(f"{name}: fail")
                 continue
     driver.close()
-
-    with open("info_logs.json", "w") as f:
-        json.dump(info_logs, f)
-
-    with open("error_logs.json", "w") as f:
-        json.dump(error_logs, f)
 
 
 def get_products(html_str, category):
@@ -126,6 +116,11 @@ def get_products(html_str, category):
 
 
 pipeline(NAME_URL)
+# driver = webdriver.Firefox()
+# html = get_html(NAME_URL["ao_vest_ao_khoac_nam"], driver, "ao_vest_ao_khoac_nam")
+# print(html)
+
+
 
 # def get_json(html_str):
 #     soup = BeautifulSoup(html_str, "html.parser")
@@ -177,7 +172,7 @@ pipeline(NAME_URL)
 # print("Getting products")
 # product_data = data['props']['initialState']['catalog']['data']
 
-# print("Saving tiki data")
+# print("Saving raw data")
 # save_to_csv(product_data, CSV_SAVE_PATH)
 # print(f"Saved {len(product_data)} rows.")
 # print(product_data[0].keys())
