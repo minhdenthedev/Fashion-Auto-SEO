@@ -6,9 +6,9 @@
 #### Test dataset: 
     - Link: https://huggingface.co/datasets/wbensvage/clothes_desc
 
-    ![Model Training Visualization](https://drive.google.com/file/d/1SvXZXGmRbcD-eo4mjzfVlKnjNsnwcv0U/view?usp=sharing)
-    ![Model Training Visualization](https://drive.google.com/file/d/1TgGwVbuRZhxrx7OJDHcZcy2h-vVLlThW/view?usp=sharing)
-    ![Model Training Visualization](https://drive.google.com/file/d/1IUJMGPLVdo6OX2Hkz9LESc8wsLY1aF3v/view?usp=sharing)
+    ![Alt text](https://drive.google.com/file/d/1SvXZXGmRbcD-eo4mjzfVlKnjNsnwcv0U/view?usp=sharing)
+    ![Alt text](https://drive.google.com/file/d/1TgGwVbuRZhxrx7OJDHcZcy2h-vVLlThW/view?usp=sharing)
+    ![Alt text](https://drive.google.com/file/d/1IUJMGPLVdo6OX2Hkz9LESc8wsLY1aF3v/view?usp=sharing)
     
 #### Checkpoints:
     - 05/04/2025 (End-to-end trainging): 
