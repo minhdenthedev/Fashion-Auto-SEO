@@ -5,10 +5,6 @@
     - Link: https://huggingface.co/datasets/tomytjandra/h-and-m-fashion-caption
 #### Test dataset: 
     - Link: https://huggingface.co/datasets/wbensvage/clothes_desc
-
-    ![Alt text](imgs/samples1.png)
-    ![Alt text](imgs/samples2.png)
-    ![Alt text](imgs/samples3.png)
     
 #### Checkpoints:
     - 05/04/2025 (End-to-end trainging): 
