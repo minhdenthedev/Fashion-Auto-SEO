@@ -6,8 +6,8 @@ import io
 
 # load the model and processor
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-processor = AutoProcessor.from_pretrained('kzap201/fashion_BLIP', revision='v1.0')  # change to version='v1.0' for the latest version
-model = BlipForConditionalGeneration.from_pretrained('kzap201/fashion_BLIP', revision='v1.0')
+processor = AutoProcessor.from_pretrained('kzap201/fashion_BLIP', revision='v2.0')  # change to version='v1.0' for the latest version
+model = BlipForConditionalGeneration.from_pretrained('kzap201/fashion_BLIP', revision='v2.0')
 model.to(device)
 model.eval()
 
@@ -30,7 +30,7 @@ async def generate_caption(file: UploadFile = File(...), max_tokens: int = 100):
                 **inputs, 
                 max_length=max_tokens,
                 min_length=10,
-                num_beams=6,  # try 6 beams for better performance
+                num_beams=5,  # try 6 beams for better performance
                 num_return_sequences=2, # for number of generated captions
                 temperature=1.0,
                 top_k=50,

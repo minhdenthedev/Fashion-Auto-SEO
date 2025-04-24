@@ -6,13 +6,14 @@
 #### Test dataset: 
     - Link: https://huggingface.co/datasets/wbensvage/clothes_desc
     
-#### Checkpoints:
-    - 05/04/2025 (End-to-end trainging): 
+#### Checkpoints: 
+    All versions of model weights is on https://huggingface.co/kzap201/fashion_BLIP
+    To load model from huggingface, use:
+    `transformers.BlipForConditionalGeneration.from_pretrained('kzap201/fashion_BLIP', revision=<version>)`
+    - 05/04/2025: v1.0 (End-to-end trainging) 
         - Test CIDEr: 1.70
-        - Link (click to download): https://huggingface.co/kzap201/BLIP_pretrained_on_H_and_M_captions/resolve/main/best_checkpoint.pth?download=true
-    - 06/04/2025 (Freeze ViT):
+    - 06/04/2025: v2.0 (Freeze ViT)
         - Test CIDEr: 1.78
-        - Link (click to download): https://huggingface.co/kzap201/BLIP_pretrained_on_H_and_M_captions/resolve/main/best_checkpoint_freeze_vit.pth?download=true
-
+        
 ## 2. Vietnamese caption
 Not yet
