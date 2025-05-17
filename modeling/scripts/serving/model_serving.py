@@ -10,8 +10,8 @@ translate_client = translate.Client()
 
 # load the model and processor
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-processor = AutoProcessor.from_pretrained('kzap201/fashion_BLIP', revision='v2.0')  # change to version='v1.0' for the latest version
-model = BlipForConditionalGeneration.from_pretrained('kzap201/fashion_BLIP', revision='v2.0')
+processor = AutoProcessor.from_pretrained('kzap201/fashion_BLIP', revision='v1.0')  # change to version='v1.0' for the latest version
+model = BlipForConditionalGeneration.from_pretrained('kzap201/fashion_BLIP', revision='v1.0')
 model.to(device)
 model.eval()
 
