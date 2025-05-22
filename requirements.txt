@@ -3,3 +3,4 @@ datasets==3.5.0
 accelerate==1.6.0
 pycocoevalcap==1.2
 tqdm==4.67.1
+redis==5.2.1
