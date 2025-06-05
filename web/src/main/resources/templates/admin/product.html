@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="utf-8" />
+  <link rel="apple-touch-icon" sizes="76x76" th:href="@{/admin/img/apple-icon.png}">
+  <link rel="icon" type="image/png" th:href="@{/admin/img/favicon.png}">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+  <title>
+    Funi Dashboard
+  </title>
+  <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
+  <!-- Fonts and icons -->
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet" />
+
+  <!-- CSS Files -->
+  <link th:href="@{/admin/css/bootstrap.min.css}" rel="stylesheet" />
+  <link th:href="@{/admin/css/paper-dashboard.css?v=2.0.1}" rel="stylesheet" />
+  <link th:href="@{/admin/demo/demo.css}" rel="stylesheet" />
+</head>
+
+<body>
+<div class="wrapper ">
+  <div class="sidebar" data-color="white" data-active-color="danger">
+    <div class="logo">
+      <a href="https://www.creative-tim.com" class="simple-text logo-mini">
+        <!-- Logo nhỏ nếu có -->
+      </a>
+      <a href="https://www.creative-tim.com" class="simple-text logo-normal">
+        Funi Dashboard
+      </a>
+    </div>
+    <div class="sidebar-wrapper">
+      <ul class="nav">
+        <li>
+          <a th:href="@{/admin/dashboard}">
+            <i class="nc-icon nc-bank"></i>
+            <p>Dashboard</p>
+          </a>
+        </li>
+        <li class="active ">
+          <a th:href="@{/admin/product}">
+            <i class="nc-icon nc-diamond"></i>
+            <p>Product</p>
+          </a>
+        </li>
+        <li>
+          <a th:href="@{/admin/category}">
+            <i class="nc-icon nc-pin-3"></i>
+            <p>Category</p>
+          </a>
+        </li>
+        <li>
+          <a th:href="@{/admin/user}">
+            <i class="nc-icon nc-single-02"></i>
+            <p>User</p>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="main-panel">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-absolute fixed-top navbar-transparent">
+      <div class="container-fluid">
+        <div class="navbar-wrapper">
+          <div class="navbar-toggle">
+            <button type="button" class="navbar-toggler">
+              <span class="navbar-toggler-bar bar1"></span>
+              <span class="navbar-toggler-bar bar2"></span>
+              <span class="navbar-toggler-bar bar3"></span>
+            </button>
+          </div>
+        </div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-bar navbar-kebab"></span>
+          <span class="navbar-toggler-bar navbar-kebab"></span>
+          <span class="navbar-toggler-bar navbar-kebab"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navigation">
+          <form>
+            <div class="input-group no-border">
+              <input type="text" value="" class="form-control" placeholder="Search...">
+              <div class="input-group-append">
+                <div class="input-group-text">
+                  <i class="nc-icon nc-zoom-split"></i>
+                </div>
+              </div>
+            </div>
+          </form>
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link btn-magnify" href="javascript:;">
+                <i class="nc-icon nc-layout-11"></i>
+                <p>
+                  <span class="d-lg-none d-md-block">Stats</span>
+                </p>
+              </a>
+            </li>
+            <li class="nav-item btn-rotate dropdown">
+              <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="nc-icon nc-bell-55"></i>
+                <p>
+                  <span class="d-lg-none d-md-block">Some Actions</span>
+                </p>
+              </a>
+              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item" href="#">Action</a>
+                <a class="dropdown-item" href="#">Another action</a>
+                <a class="dropdown-item" href="#">Something else here</a>
+              </div>
+            </li>
+            <li class="nav-item">
+              <form id="logoutForm" action="/logout" method="post" style="display: none;">
+                <input type="hidden" name="_csrf" value="${_csrf.token}"/>
+              </form>
+              <a class="nav-link btn-rotate" href="#" onclick="event.preventDefault(); document.getElementById('logoutForm').submit();">
+                <i class="nc-icon nc-button-power"></i> <!-- icon nút nguồn / logout -->
+                <p>
+                  <span class="d-lg-none d-md-block">Logout</span>
+                </p>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- End Navbar -->
+
+    <div class="content">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card">
+            <div class="card-header">
+              <button type="button" class="btn btn-primary create-product" data-toggle="modal" data-target="#createProductModal">
+                <i class="fa fa-plus"></i> Tạo sản phẩm mới
+              </button>
+            </div>
+
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table">
+                  <thead class="text-primary">
+                  <tr>
+                    <th>Tên</th>
+                    <th>Danh mục</th>
+                    <th>Giá</th>
+                    <th>Ngày</th>
+                    <th>Trạng thái</th>
+                    <th class="text-right">Hành động</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr th:each="product : ${products}">
+                    <td th:text="${product.name}"></td>
+                    <td th:text="${product.categoryName}"></td>
+                    <td th:text="${product.price}">$45.00</td>
+                    <td th:text="${#dates.format(product.date, 'yyyy-MM-dd')}"></td>
+                    <td th:text="${product.status}"></td>
+                    <td class="text-right">
+                      <a href="#" class="edit-product" th:data-id="${product.id}" title="Sửa" data-toggle="modal" data-target="#editProductModal"><i class="fa fa-pencil text-warning mr-2"></i></a>
+                      <a th:href="@{'/admin/product/delete/' + ${product.id}}" title="Xóa"><i class="fa fa-trash text-danger"></i></a>
+                    </td>
+                  </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- Modal tạo sản phẩm mới -->
+            <div class="modal fade" id="createProductModal" tabindex="-1" role="dialog" aria-labelledby="createProductModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content" id="createProductModalContent">
+                  <!-- Nội dung modal sẽ được load động qua AJAX -->
+                </div>
+              </div>
+            </div>
+            <!-- End Modal -->
+
+            <!-- Modal chỉnh sửa sản phẩm -->
+            <div class="modal fade" id="editProductModal" tabindex="-1" role="dialog" aria-labelledby="editProductModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content" id="editProductModalContent">
+                  <!-- Nội dung modal sẽ được load động qua AJAX -->
+                </div>
+              </div>
+            </div>
+            <!-- End Modal -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="footer footer-black footer-white">
+      <div class="container-fluid">
+        <div class="row">
+          <nav class="footer-nav">
+            <ul>
+              <li><a href="#">Blog</a></li>
+              <li><a href="#">Licenses</a></li>
+            </ul>
+          </nav>
+          <div class="credits ml-auto">
+            <span class="copyright">
+              © <script>document.write(new Date().getFullYear())</script>, made with <i class="fa fa-heart heart"></i>
+            </span>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+</div>
+
+<!-- Core JS Files -->
+<script th:src="@{/admin/js/core/jquery.min.js}"></script>
+<script th:src="@{/admin/js/core/popper.min.js}"></script>
+<script th:src="@{/admin/js/core/bootstrap.min.js}"></script>
+<script th:src="@{/admin/js/plugins/perfect-scrollbar.jquery.min.js}"></script>
+<script th:src="@{/admin/js/plugins/chartjs.min.js}"></script>
+<script th:src="@{/admin/js/plugins/bootstrap-notify.js}"></script>
+<script th:src="@{/admin/js/paper-dashboard.min.js?v=2.0.1}"></script>
+<script th:src="@{/admin/demo/demo.js}"></script>
+<script>
+  $(document).ready(function() {
+    // Load form tạo sản phẩm mới
+    $('.create-product').click(function() {
+      $.ajax({
+        url: '/admin/product/new',
+        type: 'GET',
+        success: function(data) {
+          $('#createProductModalContent').html(data);
+          $('#createProductModal').modal('show');
+        },
+        error: function(xhr, status, error) {
+          console.error('Lỗi:', xhr.status, error);
+          alert('Không thể tải form tạo sản phẩm.');
+        }
+      });
+    });
+
+    // Load form chỉnh sửa sản phẩm
+    $('.edit-product').click(function() {
+      var productId = $(this).data('id');
+      $.ajax({
+        url: '/admin/product/edit/' + productId,
+        type: 'GET',
+        success: function(data) {
+          $('#editProductModalContent').html(data);
+          $('#editProductModal').modal('show');
+        },
+        error: function(xhr, status, error) {
+          console.error('Lỗi:', xhr.status, error);
+          alert('Không thể tải dữ liệu sản phẩm.');
+        }
+      });
+    });
+  });
+</script>
+</body>
+
+</html>

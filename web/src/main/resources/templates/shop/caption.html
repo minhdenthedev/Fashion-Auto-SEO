@@ -1,0 +1,318 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="author" content="Untree.co">
+    <link rel="shortcut icon" th:href="@{/shop/favicon.png}">
+
+    <meta name="description" content="" />
+    <meta name="keywords" content="bootstrap, bootstrap4" />
+
+    <!-- Bootstrap CSS -->
+    <link th:href="@{/shop/css/bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css}" rel="stylesheet">
+    <link th:href="@{/shop/css/tiny-slider.css}" rel="stylesheet">
+    <link th:href="@{/shop/css/style.css}" rel="stylesheet">
+
+    <title>Caption - Furni</title>
+
+    <style>
+        .fashion-upload-section .custom-img {
+            max-height: 400px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .fashion-upload-section .upload-form-content {
+            background-color: #f5f5f5;
+        }
+
+        .fashion-upload-section .description-wrapper {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100%;
+        }
+
+        .fashion-upload-section .description-block {
+            max-height: 400px;
+            overflow-y: auto;
+            padding: 10px;
+            font-size: 24px;
+            color: #666;
+        }
+
+        .fashion-upload-section .button-wrapper {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 20px;
+        }
+
+        .fashion-upload-section .btn-light {
+            background-color: #000;
+            color: #fff;
+            border: none;
+            border-radius: 50px;
+            padding: 10px 20px;
+            transition: background-color 0.3s;
+        }
+
+        .fashion-upload-section .btn-light:hover {
+            background-color: #333;
+        }
+
+        /* Carousel Indicator Styling */
+        .carousel-indicators {
+            bottom: -50px;
+        }
+
+        .carousel-indicators button {
+            background-color: #666;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin: 0 5px;
+            border: none;
+        }
+
+        .carousel-indicators .active {
+            background-color: #000;
+        }
+
+        /* Carousel Control Styling */
+        .carousel-control-prev, .carousel-control-next {
+            width: 5%;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 5px;
+        }
+
+        .carousel-control-prev-icon, .carousel-control-next-icon {
+            display: none; /* Hide default Bootstrap icons */
+        }
+
+        .carousel-control-prev i, .carousel-control-next i {
+            color: #000; /* Black color for arrows */
+            font-size: 2rem;
+        }
+    </style>
+</head>
+
+<body>
+<!-- Start Header/Navigation -->
+<nav class="custom-navbar navbar navbar-expand-md navbar-dark bg-dark" aria-label="Furni navigation bar">
+    <div class="container">
+        <a class="navbar-brand" th:href="@{/index}">Furni<span>.</span></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsFurni">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarsFurni">
+            <ul class="custom-navbar-nav navbar-nav ms-auto mb-2 mb-md-0">
+                <li class="nav-item"><a class="nav-link" th:href="@{/index}">Home</a></li>
+                <li><a class="nav-link" th:href="@{/shop}">Shop</a></li>
+                <li><a class="nav-link" th:href="@{/about}">About us</a></li>
+                <li><a class="nav-link" th:href="@{/services}">Services</a></li>
+                <li class="nav-item active"><a class="nav-link" th:href="@{/recommendation}">Recommendation</a></li>
+                <li><a class="nav-link" th:href="@{/contact}">Contact us</a></li>
+            </ul>
+            <ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
+                <li><a class="nav-link" th:href="@{/logout}"><img th:src="@{/shop/images/user.svg}" alt="User Icon"></a></li>
+                <li><a class="nav-link" th:href="@{/cart}"><img th:src="@{/shop/images/cart.svg}" alt="Cart"></a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<!-- End Header/Navigation -->
+
+<!-- Start Hero Section -->
+<div class="hero">
+    <div class="container">
+        <div class="row justify-content-between">
+            <div class="col-lg-5">
+                <div class="intro-excerpt">
+                    <h1>Caption</h1>
+                </div>
+            </div>
+            <div class="col-lg-7"></div>
+        </div>
+    </div>
+</div>
+<!-- End Hero Section -->
+
+<!-- Start Fashion Upload Section -->
+<div class="fashion-upload-section py-5">
+    <div class="container">
+        <div class="upload-form-wrapper" id="uploadForm">
+            <div class="upload-form-content">
+                <!-- Carousel for multiple images -->
+                <div id="fashionCarousel" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        <!-- First Item -->
+                        <div class="container mt-5">
+                          <div class="carousel slide" id="captionCarousel" data-ride="carousel">
+                            <div class="carousel-inner">
+
+                              <div th:each="result, iterStat : ${results}"
+                                   th:classappend="${iterStat.index == 0} ? ' active' : ''"
+                                   class="carousel-item">
+
+                                <div class="row align-items-center">
+                                  <div class="col-md-5">
+                                    <img th:src="${result.url}" th:alt="${result.filename}" class="img-fluid custom-img" />
+                                  </div>
+                                  <div class="col-md-7 description-wrapper">
+                                    <div class="description-block">
+                                      <p><strong>Description</strong></p>
+                                      <p th:text="${result.caption}">Đang sinh caption...</p>
+                                    </div>
+                                  </div>
+                                </div>
+
+                              </div>
+
+                            </div>
+                          </div>
+                        </div>
+
+                        <!-- Second Item -->
+                        <div class="carousel-item">
+                            <div class="row align-items-center">
+                                <div class="col-md-5">
+                                    <img th:src="@{/shop/images/product-2.png}" alt="Sofa góc hiện đại" class="img-fluid custom-img">
+                                </div>
+                                <div class="col-md-7 description-wrapper">
+                                    <div class="description-block">
+                                        <p><strong>Description</strong></p>
+                                        <p>Sofa góc với thiết kế tối ưu không gian, chất liệu vải linen cao cấp, thoáng khí và bền bỉ.
+                                            Kết cấu khung thép chắc chắn, đệm mút êm ái, phù hợp cho phòng khách lớn hoặc văn phòng sang trọng.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Third Item -->
+                        <div class="carousel-item">
+                            <div class="row align-items-center">
+                                <div class="col-md-5">
+                                    <img th:src="@{/shop/images/product-3.png}" alt="Bàn cà phê tối giản" class="img-fluid custom-img">
+                                </div>
+                                <div class="col-md-7 description-wrapper">
+                                    <div class="description-block">
+                                        <p><strong>Description</strong></p>
+                                        <p>Bàn cà phê với thiết kế tối giản, mặt bàn bằng gỗ công nghiệp phủ veneer, chân thép sơn tĩnh điện.
+                                            Kích thước nhỏ gọn, dễ dàng di chuyển, phù hợp cho phòng khách, phòng ngủ hoặc góc làm việc.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Carousel Controls with Font Awesome Icons -->
+                    <button class="carousel-control-prev" type="button" data-bs-target="#fashionCarousel" data-bs-slide="prev">
+                        <i class="fas fa-chevron-left" aria-hidden="true"></i>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#fashionCarousel" data-bs-slide="next">
+                        <i class="fas fa-chevron-right" aria-hidden="true"></i>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                    <!-- Carousel Indicators -->
+                    <div class="carousel-indicators">
+                        <button type="button" data-bs-target="#fashionCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                        <button type="button" data-bs-target="#fashionCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                        <button type="button" data-bs-target="#fashionCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                    </div>
+                </div>
+                <!-- Download CSV Button -->
+                <div class="text-center mt-4">
+                    <form id="download-form" method="post" th:action="@{/images/gen-cap/download}">
+                        <input type="hidden" name="captions" id="captions-json">
+                        <input type="hidden" name="files" id="files-json">
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-download me-2"></i>Download Captions CSV
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Fashion Upload Section -->
+
+<!-- Start Footer Section -->
+<footer class="footer-section">
+    <div class="container">
+        <div class="row g-5 mb-5">
+            <div class="col-lg-4">
+                <div class="mb-4 footer-logo-wrap"><a href="#" class="footer-logo">Furni<span>.</span></a></div>
+                <p class="mb-4">Donec facilisis quam ut purus rutrum lobortis. Donec vitae odio quis nisl dapibus malesuada...</p>
+                <ul class="list-unstyled custom-social">
+                    <li><a href="#"><span class="fab fa-facebook-f"></span></a></li>
+                    <li><a href="#"><span class="fab fa-twitter"></span></a></li>
+                    <li><a href="#"><span class="fab fa-instagram"></span></a></li>
+                    <li><a href="#"><span class="fab fa-linkedin"></span></a></li>
+                </ul>
+            </div>
+            <div class="col-lg-8">
+                <div class="row links-wrap">
+                    <div class="col-6 col-md-3">
+                        <ul class="list-unstyled">
+                            <li><a th:href="@{/about}">About us</a></li>
+                            <li><a th:href="@{/services}">Services</a></li>
+                            <li><a href="#">Blog</a></li>
+                            <li><a th:href="@{/contact}">Contact us</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-6 col-md-3">
+                        <ul class="list-unstyled">
+                            <li><a href="#">Support</a></li>
+                            <li><a href="#">Knowledge base</a></li>
+                            <li><a href="#">Live chat</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-6 col-md-3">
+                        <ul class="list-unstyled">
+                            <li><a href="#">Jobs</a></li>
+                            <li><a href="#">Our team</a></li>
+                            <li><a href="#">Leadership</a></li>
+                            <li><a href="#">Privacy Policy</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-6 col-md-3">
+                        <ul class="list-unstyled">
+                            <li><a href="#">Nordic Chair</a></li>
+                            <li><a href="#">Kruzo Aero</a></li>
+                            <li><a href="#">Ergonomic Chair</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- End Footer Section -->
+
+<!-- Scripts -->
+<script th:inline="javascript">
+    document.addEventListener("DOMContentLoaded", function () {
+        const captionResults = /*[[${results}]]*/ [];
+        const uploadedFiles = /*[[${uploadedFiles}]]*/ {};
+
+        const form = document.getElementById("download-form");
+        if (form) {
+            form.addEventListener("submit", function (e) {
+                e.preventDefault();
+                document.getElementById("captions-json").value = JSON.stringify(captionResults);
+                document.getElementById("files-json").value = JSON.stringify(uploadedFiles);
+                form.submit();
+            });
+        }
+    });
+</script>
+
+
+<script th:src="@{/shop/js/bootstrap.bundle.min.js}"></script>
+<script th:src="@{/shop/js/tiny-slider.js}"></script>
+<script th:src="@{/shop/js/custom.js}"></script>
+</body>
+</html>

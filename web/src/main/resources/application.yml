@@ -1,0 +1,43 @@
+spring:
+    application:
+        name: fashion-captioner
+    thymeleaf:
+        cache: false # Tắt cache Thymeleaf để reload template khi chỉnh sửa
+        prefix: classpath:/templates/ # Đường dẫn đến thư mục templates
+        suffix: .html # Đuôi file template
+    web:
+        resources:
+            static-locations: classpath:/static/ # Đường dẫn đến thư mục static
+    mvc:
+        static-path-pattern: /** # Đảm bảo tất cả đường dẫn tĩnh được phục vụ
+    servlet:
+        multipart:
+            max-file-size: 10MB
+            max-request-size: 10MB
+    mysql:
+        datasource:
+            jdbc-url: ${SPRING_DATASOURCE_URL:jdbc:mysql://localhost:3306/image_captioning}
+            username: ${SPRING_DATASOURCE_USERNAME:root}
+            password: ${SPRING_DATASOURCE_PASSWORD:1234}
+            driver-class-name: com.mysql.cj.jdbc.Driver
+    h2:
+        datasource:
+            jdbc-url: jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+            username: sa
+            password:
+            driver-class-name: org.h2.Driver
+server:
+    port: 8081 # Cổng chạy ứng dụng (mặc định, có thể đổi nếu cần)
+ai:
+    caption:
+        url: http://127.0.0.1:8000/gen-cap
+    advise-from-images:
+        url: http://127.0.0.1:5000/images/advise
+    advise-from-query:
+        url: http://127.0.0.1:5000/query/advise
+minio:
+    endpoint: ${MINIO_ENDPOINT:http://localhost:9000}
+    access-key: ${MINIO_ACCESS_KEY:minioadmin}
+    secret-key: ${MINIO_SECRET_KEY:minioadmin}
+    bucket: ${MINIO_BUCKET:fashion-captioner}
+    external-endpoint: ${MINIO_EXTERNAL_ENDPOINT:http://localhost:9000}
