@@ -94,3 +94,13 @@ Data preprocessing:
     <img src="assets/demo_results.jpg" alt="demo_results"/>
 </p>
 
+| Batch size | Inference time (ms) | VRAM usage (mb) |
+|------------|---------------------|-----------------|
+|  4         |    402.16           |    1140.54      |
+|  8         |    654.76           |    1322.41      |
+|  16        |    1095.30          |    1691.5       |
+|  32        |    2824.61          |    2423.96      |
+|  64        |    5332.97          |    3880.04      |
+|  128       |    13036.88         |    6804.70      |
+
+GPU for evaluating: Tesla P100
