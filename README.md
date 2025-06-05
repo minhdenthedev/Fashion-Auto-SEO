@@ -1,4 +1,12 @@
 # Fashion-Auto-SEO
+<p align="center">
+    <a href="https://drive.google.com/file/d/1DL-ffmRcIID2DlY5ePpHLN1lyNZjyCJv/view?usp=sharing" target="_blank">
+    </a>
+</p>
+<p align="center">
+    <b>Watch the demo video on Google Drive</b>
+</p>
+
 ## 1. Directory structure
 ```commandline
 ├── web
@@ -84,6 +92,4 @@ Demo inference results:
 <p align="center">
     <img src="assets/demo_results.jpg" alt="demo_results"/>
 </p>
-
-Video demo: https://drive.google.com/file/d/1DL-ffmRcIID2DlY5ePpHLN1lyNZjyCJv/view?usp=sharing
 
