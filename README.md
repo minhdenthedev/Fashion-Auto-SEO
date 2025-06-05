@@ -89,8 +89,7 @@ Data preprocessing:
     <img src="assets/data_preprocessing.jpg" alt="data_preprocessing"/>
 </p>
 
-## 5. Performance & demo
-Demo inference results:
+## 5. Demo inference results
 <p align="center">
     <img src="assets/demo_results.jpg" alt="demo_results"/>
 </p>
