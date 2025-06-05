@@ -1,10 +1,12 @@
 # Fashion-Auto-SEO
+
 <p align="center">
-    <a href="https://drive.google.com/file/d/1DL-ffmRcIID2DlY5ePpHLN1lyNZjyCJv/view?usp=sharing" target="_blank">
+    <a href="https://www.youtube.com/watch?v=e3ZIJRqdkMY" target="_blank">
+        <img src="assets/demo_video_thumbnail.jpg" alt="Demo Video"/>
     </a>
 </p>
 <p align="center">
-    <b>Watch the demo video on Google Drive</b>
+    <b>Watch the demo video on YouTube</b>
 </p>
 
 ## 1. Directory structure
