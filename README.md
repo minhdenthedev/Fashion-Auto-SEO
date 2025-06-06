@@ -1,7 +1,7 @@
 # Fashion-Auto-SEO
 
 <p align="center">
-    <a href="https://www.youtube.com/watch?v=e3ZIJRqdkMY" target="_blank">
+    <a href="https://www.youtube.com/watch?v=J-tzKCv2j0Y" target="_blank">
         <img src="assets/demo_video_thumbnail.jpg" alt="Demo Video"/>
     </a>
 </p>
